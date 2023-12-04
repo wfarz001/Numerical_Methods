@@ -1,0 +1,1211 @@
+Notebook[{Cell[
+CellGroupData[{Cell[
+BoxData[{RowBox[{"(* Define the function to be integrated *)\nf[x_] := (4 x - 3)^3"}],"\n\n",RowBox[
+{"(* Define the limits of integration *)\na = -3;"}],"\n",RowBox[{"b = 5;"}],"\n\n",RowBox[
+{"(* Define the number of intervals (n) *)\nn = 4;  (* You can change n as needed *)"}],"\n\n",RowBox[
+{"(* Trapezoidal Rule *)\ntrapezoidalRule[f_, a_, b_, n_] := Module[{h, xi, sum},\n  h = (b - a)/n;\n  sum = f[a] + f[b];\n  Print[\"Sum of f(a) + f(b) for Trapezoidal Rule: \", sum];\n  For[i = 1, i < n, i++,\n    xi = a + i * h;\n    sum = sum + 2 f[xi];\n    Print[\"xi for Trapezoidal Rule (Interval \", i, \"): \", xi];\n    Print[\"Sum for Trapezoidal Rule (Interval \", i, \"): \", sum];\n  ];\n  (h/2) * sum\n]"}],"\n\n",RowBox[
+{"(* Simpson's 1/3 Rule *)\nsimpsonsOneThirdRule[f_, a_, b_, n_] := Module[{h, xi, sum1, sum2},\n  h = (b - a)/n;\n  sum1 = f[a] + f[b];\n  sum2 = 0;\n  Print[\"Sum of f(a) + f(b) for Simpson's 1/3 Rule: \", sum1];\n  For[i = 1, i < n, i++,\n    xi = a + i * h;\n    If[Mod[i, 2] == 0, sum2 = sum2 + 2 f[xi], sum1 = sum1 + 4 f[xi]];\n    Print[\"xi for Simpson's 1/3 Rule (Interval \", i, \"): \", xi];\n    Print[\"Sum for Simpson's 1/3 Rule (Interval \", i, \"): \", (h/3) * (sum1 + sum2)];\n  ];\n  (h/3) * (sum1 + sum2)\n]"}],"\n\n",RowBox[
+{"(* Calculate the results for the specified number of intervals *)\nresultTrapezoidal = trapezoidalRule[f, a, b, n];"}],"\n",RowBox[
+{"resultSimpsons = simpsonsOneThirdRule[f, a, b, n];"}],"\n\n",RowBox[{"(* Print the final results *)\nPrint[\"Trapezoidal Rule Result: \", resultTrapezoidal];"}],"\n",RowBox[
+{"Print[\"Simpson's 1/3 Rule Result: \", resultSimpsons];\n"}]}],"Input",CellLabel -> "In[76]:= ",
+ExpressionUUID -> "c08f231b-145a-4673-ad34-2a117b98dce7"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum of f(a) + f(b) for Trapezoidal Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Trapezoidal Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "6a0ccfff-a358-40e7-8b66-8b3b48177e6b"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1"}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",1,"): ",-1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "c49c435b-72d6-4ea2-988a-188d7003d637"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","852"}],
+SequenceForm["Sum for Trapezoidal Rule (Interval ",1,"): ",852],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "884ada74-ac2d-4438-aba3-840b86716f27"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",2,"): ",1],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "204905f7-ec38-4aad-ab73-71e08773d316"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","854"}],
+SequenceForm["Sum for Trapezoidal Rule (Interval ",2,"): ",854],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "a1963f54-d112-4d4f-b94f-89072bf09173"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","3"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",3,"): ",3],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "28336edc-c6f1-4c60-bb9d-4fe55ef75a0d"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","2312"}],
+SequenceForm["Sum for Trapezoidal Rule (Interval ",3,"): ",2312],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "305db731-8936-49c7-bbb1-9c1fc9e9345f"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Simpson's 1/3 Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Simpson's 1/3 Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "0d272562-9609-4879-a1df-e23d59e00a38"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1"}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",1,"): ",-1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "ba04ff5a-4415-4f43-9d3b-ea121a04531f"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"332","3"]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",1,"): ",Rational[
+332,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "473c0b97-3d20-4758-84fc-2130ab92c778"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",2,"): ",1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "2824d109-2331-4c17-bbbc-59f8e751930b"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","112"}],
+SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",2,"): ",112],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "197f6037-5835-4668-9878-b5d07c1cca5a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","3"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",3,"): ",3],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "cc838d99-2f2a-465c-8bc7-a11f906a8368"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","2056"}],
+SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",3,"): ",2056],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "8960524e-eb76-4fd4-93c3-be2dde272f61"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Trapezoidal Rule Result: \"","\[InvisibleSpace]","2312"}],
+SequenceForm["Trapezoidal Rule Result: ",2312],Editable -> False],StandardForm],"Print",
+ExpressionUUID -> "ebb5da9a-6632-4f96-9f1b-5c82dd89cb5d"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Simpson's 1/3 Rule Result: \"","\[InvisibleSpace]","2056"}],SequenceForm[
+"Simpson's 1/3 Rule Result: ",2056],Editable -> False],StandardForm],"Print",ExpressionUUID -> "a15afc54-0145-46ae-b79a-b539ce739ee5"]},
+Open],ExpressionUUID -> "88b5e068-7d50-4377-9743-9136bc9a4d9b"],Cell[
+CellGroupData[
+{Cell[
+BoxData[{RowBox[{"(* Define the function to be integrated *)\nf[x_] := (4 x - 3)^3"}],"\n\n",RowBox[
+{"(* Define the limits of integration *)\na = -3;"}],"\n",RowBox[{"b = 5;"}],"\n\n",RowBox[
+{"(* Create a function to compute the percent relative error *)\npercentRelativeError[exact_, approximate_] := Abs[(exact - approximate)/exact] * 100"}],"\n\n",RowBox[
+{"(* Loop through different values of n and compute the results and errors *)\nresultsTrapezoidal = Table[\n  n = i;\n  resultTrapezoidal = trapezoidalRule[f, a, b, n];\n  resultSimpsons = simpsonsOneThirdRule[f, a, b, n];\n  exactResult = Integrate[f[x], {x, a, b}];\n  errorTrapezoidal = percentRelativeError[exactResult, resultTrapezoidal];\n  errorSimpsons = percentRelativeError[exactResult, resultSimpsons];\n  {n, resultTrapezoidal, errorTrapezoidal, resultSimpsons, errorSimpsons},\n  {i, 2, 100}\n]"}],"\n\n",RowBox[
+{"(* Create a table with the results and errors *)\nresultTable = \n  Prepend[resultsTrapezoidal, {\"n\", \"Trapezoidal Result\", \"Trapezoidal Error\", \"Simpsons Result\", \"Simpsons Error\"}];"}],"\n\n",RowBox[
+{"(* Display the result table *)\nGrid[resultTable, Frame \[Rule] All]"}],"\n\n",RowBox[
+{"(* Plot the percent relative errors for both methods *)\nListPlot[{resultsTrapezoidal[[All, {1, 3}]], resultsTrapezoidal[[All, {1, 5}]]},\n  PlotLegends \[Rule] {\"Trapezoidal Error\", \"Simpsons Error\"},\n  FrameLabel \[Rule] {\"Number of Intervals (n)\", \"Percent Relative Error (%)\"},\n  PlotRange \[Rule] All\n]\n"}]}],
+"Input",CellLabel -> "In[86]:= ",ExpressionUUID -> "0f6cb772-654b-4eb8-9e0f-d7b3fa90f464"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Trapezoidal Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Trapezoidal Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "e82881ff-9d6d-4684-a851-6a0db2ee094b"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",1,"): ",1],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "9da9f6d5-4b0a-4a98-a19c-6d21d6b383fb"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1540"}],
+SequenceForm["Sum for Trapezoidal Rule (Interval ",1,"): ",1540],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "26ec8690-6a61-40b4-911d-42639df784ec"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Simpson's 1/3 Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Simpson's 1/3 Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "428d2e6a-26e2-4a39-85df-1c3133eeb27b"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",1,"): ",1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "bf004467-36d5-4e22-b958-1fc30637d190"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","2056"}],
+SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",1,"): ",2056],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "1d92c83c-fcca-4f8c-9223-fa374230f56b"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Trapezoidal Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Trapezoidal Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "798b0e77-d30c-4b8a-a8d1-6ef5f7dbb268"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1","3"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",1,
+"): ",Rational[-1,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "3b92b410-67cb-4894-abf7-c6b251542595"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"37132","27"]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",1,"): ",Rational[
+37132,27]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "2afbd3f5-fcb5-4add-973b-d777d604b408"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"7","3"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",2,"): ",Rational[7,3]],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "1e28f62e-1ab6-434b-bdc0-490e58377780"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"5650","3"]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",2,"): ",Rational[
+5650,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "998f79bd-c3d2-46a9-a303-d604cd523712"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Simpson's 1/3 Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Simpson's 1/3 Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "8090ef5a-005a-4725-87ff-ee552d1a9e67"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1","3"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+1,"): ",Rational[-1,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "84a99dfc-b03a-4082-a0ee-d48d5ed8ab81"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"261904","243"]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",1,"): ",Rational[
+261904,243]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "cbec0630-fd0d-43d0-8c90-5bbc8e8cfd1a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"7","3"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",2,"): ",Rational[7,
+3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "e942aa39-34e8-4970-9b74-c7eb9b53794d"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"371648","243"]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",2,"): ",Rational[
+371648,243]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "b82ca285-9133-4247-b311-cf74eb125c69"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Trapezoidal Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Trapezoidal Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "515df534-8be2-46ce-bf6b-24edaf070cfd"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1"}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",1,"): ",-1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "b20d488d-d92e-48be-9840-2ac37b2f335b"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","852"}],
+SequenceForm["Sum for Trapezoidal Rule (Interval ",1,"): ",852],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "024d5f25-f600-4076-9ce3-b6c11a688b88"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",2,"): ",1],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "6b7e32e0-2d71-4604-854f-0f5f85037397"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","854"}],
+SequenceForm["Sum for Trapezoidal Rule (Interval ",2,"): ",854],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "e09957e0-f369-44f9-baa5-ec08f7be2393"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","3"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",3,"): ",3],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "771865ca-c4b0-4c64-9df8-4e63fef7e178"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","2312"}],
+SequenceForm["Sum for Trapezoidal Rule (Interval ",3,"): ",2312],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "ddd63d5f-d4ef-4a1d-a086-8558ebd328f1"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Simpson's 1/3 Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Simpson's 1/3 Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "a8526cb7-86cb-4e37-8010-75695f4f3cef"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1"}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",1,"): ",-1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "b4ec691e-29a5-4adf-9c94-c0f2dad4bf3f"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"332","3"]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",1,"): ",Rational[
+332,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "ac282667-a61b-48be-ae69-9d77e02488ed"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",2,"): ",1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "e74e397b-6d2a-4869-b027-98b86bde2519"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","112"}],
+SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",2,"): ",112],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "cd1441d4-59b8-4eb7-8363-56c73085ddcc"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","3"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",3,"): ",3],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "3f3e4e63-731b-4807-bb1f-86e69133dfe9"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","2056"}],
+SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",3,"): ",2056],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "eec0ef23-86c1-469a-8dfc-11790e25238a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Trapezoidal Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Trapezoidal Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "e434acf8-0bed-438f-ad9b-3de2022b03f7"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["7","5"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",1,
+"): ",Rational[-7,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "7c5da90e-b073-4120-bfe9-1838d611c8bd"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"33236","125"]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",1,"): ",Rational[
+33236,125]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "f46613b8-9245-474e-8dd4-7f208685a455"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"1","5"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",2,"): ",Rational[1,5]],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "1179bfd2-36ee-4c72-9939-0d7ddbbcae2b"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"30574","125"]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",2,"): ",Rational[
+30574,125]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "dde7827a-b9f5-4200-978b-e332c258ded1"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"9","5"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",3,"): ",Rational[9,5]],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "dfe124c3-ca98-4317-a32e-5e855f688820"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"49096","125"]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",3,"): ",Rational[
+49096,125]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "37a35a8d-246a-4877-96eb-34e9dc5e3091"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"17","5"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",4,"): ",Rational[17,
+5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "4551782c-e2e2-4db8-aad0-1b40c58ae21c"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"13874","5"]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",4,"): ",Rational[
+13874,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "203f8758-6137-4681-9539-caabaf7aefe7"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Simpson's 1/3 Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Simpson's 1/3 Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "1f446d33-fbd8-4b95-ba8d-c2d546a13fe6"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["7","5"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+1,"): ",Rational[-7,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "7b188f90-4278-4e54-84b0-3459d8a97bc8"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["335408","625"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+1,"): ",Rational[-335408,625]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "e4ed4724-a163-40a6-b22c-0991debc57cc"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"1","5"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",2,"): ",Rational[1,
+5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "517557c6-89ec-4120-ae23-ae13f0d90358"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["205504","375"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+2,"): ",Rational[-205504,375]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "f1330a66-75db-40f8-904d-045de01e7118"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"9","5"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",3,"): ",Rational[9,
+5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "7ef820ee-91ba-48e5-9e71-dd9efd5184e3"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["731168","1875"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+3,"): ",Rational[-731168,1875]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "dd13f1a1-790c-4e9f-a6ad-37938e665a9d"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"17","5"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",4,"): ",Rational[
+17,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "b441bc6f-84fe-4992-8988-8fe5fff12f55"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"550288","625"]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",4,"): ",Rational[
+550288,625]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "ea298f39-3d43-436e-a6ee-454faf883e7e"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Trapezoidal Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Trapezoidal Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "1628387b-d510-4afb-89d8-956241fa013d"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["5","3"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",1,
+"): ",Rational[-5,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "ef6134ba-3147-4ada-b903-819c288816f7"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["7252","27"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+1,"): ",Rational[-7252,27]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "763de730-9662-4539-9270-5f304f0ee6e4"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1","3"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",2,
+"): ",Rational[-1,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "a4a92734-89e9-415c-ab3d-a41538b7217a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1294","3"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+2,"): ",Rational[-1294,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "0b14da3b-7b96-407a-aa7d-51f77610c70b"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",3,"): ",1],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "b7be963b-36dc-49a0-8d41-a0ca49b22674"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1288","3"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+3,"): ",Rational[-1288,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "b360cf0b-6b0c-4e15-8aca-a832efa3608e"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"7","3"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",4,"): ",Rational[7,3]],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "f2affd38-bec9-489e-a985-fd58dc3ec676"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"2126","27"]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",4,"): ",Rational[
+2126,27]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "97320107-5a95-4c26-9484-f9a19e923784"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"11","3"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",5,"): ",Rational[11,
+3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "1d95652c-4289-4bc6-8f23-6c5dfe220009"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"9764","3"]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",5,"): ",Rational[
+9764,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "26fb61e8-2080-4173-908c-95c6246d5e8f"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Simpson's 1/3 Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Simpson's 1/3 Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "ac2d4a7d-af07-409b-a79c-c19375b740aa"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["5","3"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+1,"): ",Rational[-5,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "964eedc5-8357-4fb9-82b4-66eda1826180"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["224120","243"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+1,"): ",Rational[-224120,243]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "f04b3676-0f17-486f-8db4-ca5666c2a9f4"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1","3"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+2,"): ",Rational[-1,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "8eac0ac0-da0f-4913-b320-36712ac4991e"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["241696","243"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+2,"): ",Rational[-241696,243]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "d545a197-2310-453f-9476-f94dfe6a7fa8"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",3,"): ",1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "bd9b0010-41ff-4fc7-b9c9-f8946c3a9146"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["241264","243"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+3,"): ",Rational[-241264,243]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "66bd295d-271e-470f-aef9-bb8c5ee562b4"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"7","3"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",4,"): ",Rational[7,
+3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "380328f7-657d-4300-9afa-347028266240"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["186392","243"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+4,"): ",Rational[-186392,243]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "6d6de114-32ef-4af1-a932-be7af01e3abe"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"11","3"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",5,"): ",Rational[
+11,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "421b766d-e599-4764-a3d5-8fd87bf842c6"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","2056"}],
+SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",5,"): ",2056],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "f9d53263-1761-4b96-953b-6dee1c92cf85"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Trapezoidal Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Trapezoidal Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "75dd15b2-28d7-4440-a7e2-6942057eba71"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["13","7"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",
+1,"): ",Rational[-13,7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "fde921c7-0191-4f60-8e6c-b648e0fbeda5"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["250500","343"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+1,"): ",Rational[-250500,343]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "27b45ee3-14fe-4c50-8c4d-f5cef4af2b1a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["5","7"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",2,
+"): ",Rational[-5,7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "78c45934-d177-4dc7-a2da-5307d4ffed73"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["388342","343"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+2,"): ",Rational[-388342,343]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "52ffd93c-9f36-4698-a56c-37f9ce5dc32e"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"3","7"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",3,"): ",Rational[3,7]],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "316ceb7d-e962-4b85-91f2-bba0f2691b9a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["389800","343"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+3,"): ",Rational[-389800,343]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "2dcb7985-1cdd-4f13-bff3-bf62ec7d5c89"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"11","7"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",4,"): ",Rational[11,
+7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "3e27f3be-ab13-4dda-8676-cc95dfa0a853"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["365466","343"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+4,"): ",Rational[-365466,343]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "c631747e-f568-4e9a-8b2f-50f014e39d48"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"19","7"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",5,"): ",Rational[19,
+7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "5e1bb023-8505-420e-bbbd-1a2c24a65a5d"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["32716","343"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+5,"): ",Rational[-32716,343]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "d99d2d4e-5028-41e5-bb21-c37fc51189e0"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"27","7"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",6,"): ",Rational[27,
+7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "3f95a8a8-5ec8-4d9b-8085-68b247713eca"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"26210","7"]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",6,"): ",Rational[
+26210,7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "7fae63a1-5590-4f46-86c8-61716907cb5f"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Simpson's 1/3 Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Simpson's 1/3 Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "018cc63b-d8e2-4126-9c88-7b572146f4c7"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["13","7"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+1,"): ",Rational[-13,7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "65677f7f-383a-4dc6-8d40-1d914a535edf"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["8228272","7203"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+1,"): ",Rational[-8228272,7203]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "812af5a1-7c00-4d4a-9288-e373736f9c27"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["5","7"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+2,"): ",Rational[-5,7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "cdcbed8d-a73e-44d4-96e2-611833c3d929"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["3110336","2401"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+2,"): ",Rational[-3110336,2401]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "1f246652-2aef-4544-ad4e-09328bb8d432"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"3","7"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",3,"): ",Rational[3,
+7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "881404fe-a900-48d5-a270-22227f8df053"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["3118112","2401"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+3,"): ",Rational[-3118112,2401]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "7ad6eefe-4b81-466c-abf2-e062fa63c4e1"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"11","7"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",4,"): ",Rational[
+11,7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "6290d147-0829-4e93-bf75-f33bb27e9d63"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["9159664","7203"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+4,"): ",Rational[-9159664,7203]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "a42d75c9-3cd5-4345-a732-13781d83eadf"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"19","7"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",5,"): ",Rational[
+19,7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "52d5cb17-1c29-448e-a5db-3d30a41e90a9"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["547952","1029"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+5,"): ",Rational[-547952,1029]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "a0211ab0-4fb3-42a4-88b0-71ba3e9c316a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"27","7"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",6,"): ",Rational[
+27,7]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "3995f9ad-4bb3-4edb-a311-b931b38d412e"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"6700384","7203"]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",6,"): ",
+Rational[6700384,7203]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "cce6698e-8e7e-442b-a75f-30cff5ab5c4a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Trapezoidal Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Trapezoidal Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "2e60b7b1-fdd9-4fbd-b475-7f35ce5b0ef8"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","2"}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",1,"): ",-2],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "f2ed6e5e-433c-400a-b6a0-79d041aaaac2"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1124"}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",1,"): ",-1124],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "b946e3bc-dbb5-48e8-8283-932a6569552f"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1"}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",2,"): ",-1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "bb11f8db-4137-4477-822c-db1bf1396a86"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1810"}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",2,"): ",-1810],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "35efb815-0cd5-480c-9355-69e4a15ec53f"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","0"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",3,"): ",0],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "9b53cb95-45e4-4446-9b13-fb428b918789"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1864"}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",3,"): ",-1864],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "faae2e8b-3c72-4a47-a10e-7524a97f2da6"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",4,"): ",1],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "bbcc0c95-17fc-4513-8101-e45e5a311df2"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1862"}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",4,"): ",-1862],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "1cc26f44-0868-4631-9ef8-091b9a92d4a0"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","2"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",5,"): ",2],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "334654bb-518e-441c-95e7-1fb1fb708661"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1612"}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",5,"): ",-1612],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "9842a3bd-e52f-49f4-924a-27e8a152d6e7"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","3"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",6,"): ",3],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "16288f6a-b976-4db0-ada5-dba6a78d9f60"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","154"}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",6,"): ",-154],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "40ded1f5-a0f7-425f-97e6-cc69f642e42c"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","4"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",7,"): ",4],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "fd957049-61e8-40a8-8b4c-a6d61b993596"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","4240"}],
+SequenceForm["Sum for Trapezoidal Rule (Interval ",7,"): ",4240],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "f75216b5-0baa-44f7-ab83-19734b94ac92"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Simpson's 1/3 Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Simpson's 1/3 Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "3f57d635-2c28-427f-844b-e2cea18fdae8"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","2"}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",1,"): ",-2],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "978e2431-79e4-4707-af79-ebbed5c5d25c"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1262"}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",1,"): ",-1262],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "d20dccd2-1067-4f5a-8cf6-43d28aca0f60"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1"}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",2,"): ",-1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "836a47d5-c42b-4bce-97ed-922668677eaa"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["4472","3"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+2,"): ",Rational[-4472,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "c5a2e328-b566-4bca-9185-715686c30eec"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","0"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",3,"): ",0],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "2f155e80-3b66-46c7-8851-2e994681dffd"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["4580","3"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+3,"): ",Rational[-4580,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "f99cbfbd-6f8d-4095-b2fb-640ed23e600e"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",4,"): ",1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "354835e5-3898-4ad7-b0b7-3a8e6593aa8d"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-","1526"}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",4,"): ",-1526],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "d2bdb0d0-5546-48e1-bc5c-08dc7f6ddba8"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","2"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",5,"): ",2],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "7f169b0c-0dde-41a7-a16a-5c2c41ca9906"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["4078","3"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+5,"): ",Rational[-4078,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "f02809bc-aca6-40cd-92ac-ec26b9f26076"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","3"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",6,"): ",3],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "56b67bff-aa59-477a-a5fc-d9397156aaa1"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["2620","3"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+6,"): ",Rational[-2620,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "a428d96f-25be-43f6-81d2-a0caf2d804b3"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","4"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",7,"): ",4],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "127efaef-6330-4951-8fa1-e89012a6452b"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","2056"}],
+SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",7,"): ",2056],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "5d6975ba-3c90-4fbf-86f6-16c95d60b27f"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Trapezoidal Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Trapezoidal Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "99eea122-a965-4811-98d1-121a355e8737"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["19","9"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",
+1,"): ",Rational[-19,9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "26cbfb2f-69f2-4fc7-a62c-884f4c9e20f8"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1064252","729"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+1,"): ",Rational[-1064252,729]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "101b6ee9-3ba2-4a53-8ec9-210dee7c57e4"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["11","9"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",
+2,"): ",Rational[-11,9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "e8d61507-1084-49d1-b42f-02b2525e0800"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["197786","81"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+2,"): ",Rational[-197786,81]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "af2f61fd-7ad2-443a-8188-a4c76588cedf"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1","3"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",3,
+"): ",Rational[-1,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "5adea7ab-85e4-4bb3-83fc-a44e69028aa1"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["210968","81"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+3,"): ",Rational[-210968,81]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "31b0f122-0be1-41b6-a1a8-28fc4b2b19a6"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"5","9"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",4,"): ",Rational[5,9]],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "ed29a208-8cf3-41d8-9922-d1fedf33e0bb"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1899398","729"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+4,"): ",Rational[-1899398,729]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "35bf9411-25ec-4005-9a94-be8a382459a5"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"13","9"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",5,"): ",Rational[13,
+9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "2065caf4-67a2-4d37-8064-881a3131451e"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["207572","81"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+5,"): ",Rational[-207572,81]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "4bf8ff63-9483-41d3-9a5c-a1e4258462aa"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"7","3"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",6,"): ",Rational[7,3]],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "a7c9d168-d008-4938-b86e-9e18691a1a98"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["166418","81"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+6,"): ",Rational[-166418,81]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "41428905-1bbb-4d53-a0ef-d011fcf31756"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"29","9"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",7,"): ",Rational[29,
+9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "1f857872-b4cb-4d32-b27b-2b3574d0b5a1"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["87824","729"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+7,"): ",Rational[-87824,729]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "303f1ec5-aff2-472b-abd4-240e7bea04a9"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","8","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"37","9"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",8,"): ",Rational[37,
+9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "691b1197-46e1-49e8-ab4d-83aa76d20017"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","8","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"42658","9"]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",8,"): ",Rational[
+42658,9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "29d44321-8ebe-4029-a03d-9cdf8e34834a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Simpson's 1/3 Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Simpson's 1/3 Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "1a135a4e-bc42-4b9f-8e1f-83affc44370d"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["19","9"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+1,"): ",Rational[-19,9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "84323721-06af-4778-a213-61e6f96cef30"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["25997648","19683"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+1,"): ",Rational[-25997648,19683]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "06cc09ad-eda3-4e31-9286-17cec4b9ca70"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["11","9"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+2,"): ",Rational[-11,9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "e48960b1-1123-4f72-8daf-fb7a911a6188"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["31724224","19683"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+2,"): ",Rational[-31724224,19683]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "2e6bac43-4be0-4985-a4b0-1fe41c4c992a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1","3"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+3,"): ",Rational[-1,3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "9dd13edc-ced8-4e62-8b54-03b718134f16"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["33622432","19683"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+3,"): ",Rational[-33622432,19683]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "65331e50-92e5-43e4-a9c7-3816dd949286"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"5","9"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",4,"): ",Rational[5,
+9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "955b8c06-0fd8-4116-887c-9280f796337f"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["33627920","19683"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+4,"): ",Rational[-33627920,19683]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "f4f0a9d2-76fe-4010-9aa0-2ffcc6c584c3"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"13","9"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",5,"): ",Rational[
+13,9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "9a508f96-731e-405a-9197-3a19e65ced38"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1226960","729"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+5,"): ",Rational[-1226960,729]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "3eb7c5d0-1457-4723-82ec-0cf4e9cf899e"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"7","3"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",6,"): ",Rational[7,
+3]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "898f07d1-86f3-4320-8750-ebcacb50611b"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1117216","729"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+6,"): ",Rational[-1117216,729]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "44a441b6-3749-4626-a8fa-e0deb0e4f729"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"29","9"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",7,"): ",Rational[
+29,9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "aa0eb8d8-beb6-458f-aa9f-3e0248498297"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["7605824","19683"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+7,"): ",Rational[-7605824,19683]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "8d39feb3-6f2f-4183-b210-3d23d12a634a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","8","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"37","9"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",8,"): ",Rational[
+37,9]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "88da95d6-e8fc-4e3a-89c0-efbcb2da9154"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","8","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"20739152","19683"]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",8,"): ",
+Rational[20739152,19683]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "abc402d5-216a-4561-907b-14f3d667ed06"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Trapezoidal Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Trapezoidal Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "806732de-b802-4d40-b13b-0f0647e8b682"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["11","5"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",
+1,"): ",Rational[-11,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "b4052ba8-0c8e-43fc-a52a-c17428b82480"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["218508","125"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+1,"): ",Rational[-218508,125]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "3750e53b-150f-4d2f-a977-c0b4b13f725d"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["7","5"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",2,
+"): ",Rational[-7,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "9c0667a0-3cb6-4ca9-a776-f86902175349"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["377522","125"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+2,"): ",Rational[-377522,125]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "290e5bc7-4097-44e5-bf7a-aa6192112df4"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["3","5"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",3,
+"): ",Rational[-3,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "5dfefc02-c3e5-47c9-b632-e4dfd513ec70"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["416888","125"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+3,"): ",Rational[-416888,125]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "c7db3921-22dc-48b0-a949-ed3fed61de46"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"1","5"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",4,"): ",Rational[1,5]],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "e0f409c1-5350-45be-a917-b06207077321"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["16782","5"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+4,"): ",Rational[-16782,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "0de0d347-1ad6-4b3a-ad1e-5a844dbb81d0"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Trapezoidal Rule (Interval ",5,"): ",1],Editable -> False],StandardForm],
+"Print",ExpressionUUID -> "48b66d9d-00bd-4aee-9ad1-ee3fbbaa9e9d"],Cell[
+BoxData[InterpretationBox[
+RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["16772","5"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+5,"): ",Rational[-16772,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "941b1abe-648b-4dc0-9ff2-ed0d744c648e"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"9","5"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",6,"): ",Rational[9,5]],
+Editable -> False],StandardForm],"Print",ExpressionUUID -> "aca58570-575a-476e-b2e2-ab1dcd5fb628"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["400778","125"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+6,"): ",Rational[-400778,125]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "67a4ace6-6b75-4223-95b5-683dec6bb049"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"13","5"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",7,"): ",Rational[13,
+5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "1b50bb31-0aee-45f3-b643-b5204916e10d"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["299472","125"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+7,"): ",Rational[-299472,125]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "374f3d41-e72c-441f-854e-76dfde8dbd21"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","8","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"17","5"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",8,"): ",Rational[17,
+5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "b9aca52c-03f7-4751-8322-58a1c29ca7c1"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","8","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1718","125"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+8,"): ",Rational[-1718,125]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "8850c1d2-4a99-4752-b7b6-c9c08c6dfd15"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","9","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"21","5"]}],SequenceForm["xi for Trapezoidal Rule (Interval ",9,"): ",Rational[21,
+5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "57263a97-1b11-42cb-a087-71e99fc259be"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","9","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"26212","5"]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",9,"): ",Rational[
+26212,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "5074320a-62af-45b7-ad8e-39c35ca8a83b"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Simpson's 1/3 Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Simpson's 1/3 Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "c56007c7-03b9-44c7-9130-379318af7ef1"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["11","5"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+1,"): ",Rational[-11,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "08a33fd5-4abc-4411-a88c-5173847171c3"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["2517064","1875"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+1,"): ",Rational[-2517064,1875]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "550eddb7-f73b-4d9a-8917-701c347b0bcf"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["7","5"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+2,"): ",Rational[-7,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "eac8e2eb-ef75-4d2d-81a5-35b425e342b3"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","2","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["210208","125"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+2,"): ",Rational[-210208,125]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "a9615b9b-aebf-47cd-b60f-c0e9737377f1"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["3","5"]}]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",
+3,"): ",Rational[-3,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "b2b480f7-0867-463c-b68a-302b88866ca1"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","3","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["1156016","625"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+3,"): ",Rational[-1156016,625]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "0485cb78-4e88-4b39-b88d-463b2c436aa3"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"1","5"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",4,"): ",Rational[1,
+5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "59bf7ed2-d1a1-4b84-9822-e096b9efd62d"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","4","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["3478696","1875"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+4,"): ",Rational[-3478696,1875]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "b0c2fcb5-7102-4ac5-bf89-1c0e66019b34"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","1"}],
+SequenceForm["xi for Simpson's 1/3 Rule (Interval ",5,"): ",1],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "da61bce3-36d6-4ec4-b006-5a6cb71451ae"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","5","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["3476696","1875"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+5,"): ",Rational[-3476696,1875]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "97729bec-7fcb-40ca-9b65-438c74df50de"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"9","5"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",6,"): ",Rational[9,
+5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "3adcc30c-bcde-4c81-b052-43fdcafaf266"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","6","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["3402608","1875"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+6,"): ",Rational[-3402608,1875]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "65bfcaf3-b3da-44e5-8089-12545a1b5d5a"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"13","5"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",7,"): ",Rational[
+13,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "f5f32c7d-f870-4982-8aab-5326792ea8fe"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","7","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["518432","375"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+7,"): ",Rational[-518432,375]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "115e8036-d148-42a5-a14f-56e61232d0df"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","8","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"17","5"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",8,"): ",Rational[
+17,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "77d5f0c0-423f-4f5f-abe6-22300275ed4e"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","8","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["467048","625"]}]}],SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",
+8,"): ",Rational[-467048,625]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "8444856b-65d5-4aa8-b0e6-b748012152eb"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","9","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",FractionBox[
+"21","5"]}],SequenceForm["xi for Simpson's 1/3 Rule (Interval ",9,"): ",Rational[
+21,5]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "70a22d1c-9475-4e6e-98b6-703e5c220ad6"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Simpson's 1/3 Rule (Interval \"","\[InvisibleSpace]","9","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]","2056"}],
+SequenceForm["Sum for Simpson's 1/3 Rule (Interval ",9,"): ",2056],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "d469a077-e18f-448f-9da4-d7b5cdee1cce"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum of f(a) + f(b) for Trapezoidal Rule: \"","\[InvisibleSpace]","1538"}],
+SequenceForm["Sum of f(a) + f(b) for Trapezoidal Rule: ",1538],Editable -> False],
+StandardForm],"Print",ExpressionUUID -> "5f429e85-1a4d-4793-a94e-a1974194d0dc"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"xi for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["25","11"]}]}],SequenceForm["xi for Trapezoidal Rule (Interval ",
+1,"): ",Rational[-25,11]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "8aaa10e9-2c40-4aaf-90a3-db0a467ef3d5"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"\"Sum for Trapezoidal Rule (Interval \"","\[InvisibleSpace]","1","\[InvisibleSpace]","\"): \"","\[InvisibleSpace]",RowBox[
+{"-",FractionBox["2658196","1331"]}]}],SequenceForm["Sum for Trapezoidal Rule (Interval ",
+1,"): ",Rational[-2658196,1331]],Editable -> False],StandardForm],"Print",ExpressionUUID -> "5b4ffa30-8092-462d-bf13-93659e6c42af"],Cell[
+BoxData[
+RowBox[{"{",RowBox[{RowBox[{"{",RowBox[{"2",",","3080",",",FractionBox["12800","257"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"3",",",FractionBox["22600","9"],",",FractionBox["51200","2313"],",",FractionBox[
+"371648","243"],",",FractionBox["1599500","62451"]}],"}"}],",",RowBox[{"{",RowBox[
+{"4",",","2312",",",FractionBox["3200","257"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"5",",",FractionBox["55496","25"],",",FractionBox["2048","257"],",",FractionBox[
+"550288","625"],",",FractionBox["367356","6425"]}],"}"}],",",RowBox[{"{",RowBox[{"6",",",FractionBox[
+"19528","9"],",",FractionBox["12800","2313"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"7",",",FractionBox["104840","49"],",",FractionBox["51200","12593"],",",FractionBox[
+"6700384","7203"],",",FractionBox["101362300","1851171"]}],"}"}],",",RowBox[{"{",RowBox[
+{"8",",","2120",",",FractionBox["800","257"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"9",",",FractionBox["170632","81"],",",FractionBox["51200","20817"],",",FractionBox[
+"20739152","19683"],",",FractionBox["246613700","5058531"]}],"}"}],",",RowBox[{"{",RowBox[
+{"10",",",FractionBox["52424","25"],",",FractionBox["512","257"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"11",",",FractionBox["252872","121"],",",FractionBox["51200","31097"],",",FractionBox[
+"17118208","14641"],",",FractionBox["162296100","3762737"]}],"}"}],",",RowBox[{"{",RowBox[
+{"12",",",FractionBox["18760","9"],",",FractionBox["3200","2313"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"13",",",FractionBox["351560","169"],",",FractionBox["51200","43433"],",",FractionBox[
+"108502768","85683"],",",FractionBox["845768500","22020531"]}],"}"}],",",RowBox[{"{",RowBox[
+{"14",",",FractionBox["101768","49"],",",FractionBox["12800","12593"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"15",",",FractionBox["466696","225"],",",FractionBox["2048","2313"],",",FractionBox[
+"204508064","151875"],",",FractionBox["53873468","1561275"]}],"}"}],",",RowBox[{"{",RowBox[
+{"16",",","2072",",",FractionBox["200","257"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"17",",",FractionBox["598280","289"],",",FractionBox["51200","74273"],",",FractionBox[
+"118021168","83521"],",",FractionBox["671225100","21464897"]}],"}"}],",",RowBox[{"{",RowBox[
+{"18",",",FractionBox["167560","81"],",",FractionBox["12800","20817"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"19",",",FractionBox["746312","361"],",",FractionBox["51200","92777"],",",FractionBox[
+"574230592","390963"],",",FractionBox["2869866700","100477491"]}],"}"}],",",RowBox[
+{"{",RowBox[{"20",",",FractionBox["51656","25"],",",FractionBox["128","257"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"21",",",FractionBox["910792","441"],",",FractionBox["51200","113337"],",",FractionBox[
+"884439344","583443"],",",FractionBox["3938993300","149944851"]}],"}"}],",",RowBox[
+{"{",RowBox[{"22",",",FractionBox["249800","121"],",",FractionBox["12800","31097"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"23",",",FractionBox["1091720","529"],",",FractionBox["51200","135953"],",",FractionBox[
+"435496096","279841"],",",FractionBox["1748212500","71919137"]}],"}"}],",",RowBox[
+{"{",RowBox[{"24",",",FractionBox["18568","9"],",",FractionBox["800","2313"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"25",",",FractionBox["1289096","625"],",",FractionBox["2048","6425"],",",FractionBox[
+"1864544464","1171875"],",",FractionBox["272415268","12046875"]}],"}"}],",",RowBox[
+{"{",RowBox[{"26",",",FractionBox["348488","169"],",",FractionBox["12800","43433"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"27",",",FractionBox["1502920","729"],",",FractionBox["51200","187353"],",",FractionBox[
+"2585143424","1594323"],",",FractionBox["8659808300","409741011"]}],"}"}],",",RowBox[
+{"{",RowBox[{"28",",",FractionBox["101000","49"],",",FractionBox["3200","12593"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"29",",",FractionBox["1733192","841"],",",FractionBox["51200","216137"],",",FractionBox[
+"1165729744","707281"],",",FractionBox["3605499900","181771217"]}],"}"}],",",RowBox[
+{"{",RowBox[{"30",",",FractionBox["463624","225"],",",FractionBox["512","2313"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"31",",",FractionBox["1979912","961"],",",FractionBox["51200","246977"],",",FractionBox[
+"4631954464","2770563"],",",FractionBox["13304038300","712034691"]}],"}"}],",",RowBox[
+{"{",RowBox[{"32",",","2060",",",FractionBox["50","257"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"33",",",FractionBox["2243080","1089"],",",FractionBox["51200","279873"],",",FractionBox[
+"6023080208","3557763"],",",FractionBox["16146006500","914345091"]}],"}"}],",",RowBox[
+{"{",RowBox[{"34",",",FractionBox["595208","289"],",",FractionBox["12800","74273"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"35",",",FractionBox["2522696","1225"],",",FractionBox["2048","12593"],",",FractionBox[
+"2568858688","1500625"],",",FractionBox["258213156","15426425"]}],"}"}],",",RowBox[
+{"{",RowBox[{"36",",",FractionBox["166792","81"],",",FractionBox["3200","20817"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"37",",",FractionBox["2818760","1369"],",",FractionBox["51200","351833"],",",FractionBox[
+"9720820144","5622483"],",",FractionBox["22987561300","1444978131"]}],"}"}],",",RowBox[
+{"{",RowBox[{"38",",",FractionBox["743240","361"],",",FractionBox["12800","92777"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"39",",",FractionBox["3131272","1521"],",",FractionBox["51200","390897"],",",FractionBox[
+"12106559072","6940323"],",",FractionBox["27034312700","1783663011"]}],"}"}],",",RowBox[
+{"{",RowBox[{"40",",",FractionBox["51464","25"],",",FractionBox["32","257"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"41",",",FractionBox["3460232","1681"],",",FractionBox["51200","432017"],",",FractionBox[
+"4968969328","2825761"],",",FractionBox["10509941100","726220577"]}],"}"}],",",RowBox[
+{"{",RowBox[{"42",",",FractionBox["907720","441"],",",FractionBox["12800","113337"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"43",",",FractionBox["3805640","1849"],",",FractionBox["51200","475193"],",",FractionBox[
+"18167350528","10256403"],",",FractionBox["36497675500","2635895571"]}],"}"}],",",RowBox[
+{"{",RowBox[{"44",",",FractionBox["249032","121"],",",FractionBox["3200","31097"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"45",",",FractionBox["4167496","2025"],",",FractionBox["2048","20817"],",",FractionBox[
+"21935738864","12301875"],",",FractionBox["1678458068","126463275"]}],"}"}],",",RowBox[
+{"{",RowBox[{"46",",",FractionBox["1088648","529"],",",FractionBox["12800","135953"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"47",",",FractionBox["4545800","2209"],",",FractionBox["51200","567713"],",",FractionBox[
+"8754097888","4879681"],",",FractionBox["15981578100","1254078017"]}],"}"}],",",RowBox[
+{"{",RowBox[{"48",",",FractionBox["18520","9"],",",FractionBox["200","2313"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"49",",",FractionBox["4940552","2401"],",",FractionBox["51200","617057"],",",FractionBox[
+"31199604112","17294403"],",",FractionBox["54471105700","4444661571"]}],"}"}],",",RowBox[
+{"{",RowBox[{"50",",",FractionBox["1286024","625"],",",FractionBox["512","6425"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"51",",",FractionBox["5351752","2601"],",",FractionBox["51200","668457"],",",FractionBox[
+"36802627904","20295603"],",",FractionBox["61564148300","5215969971"]}],"}"}],",",RowBox[
+{"{",RowBox[{"52",",",FractionBox["347720","169"],",",FractionBox["3200","43433"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"53",",",FractionBox["5779400","2809"],",",FractionBox["51200","721913"],",",FractionBox[
+"14376230416","7890481"],",",FractionBox["23082481500","2027853617"]}],"}"}],",",RowBox[
+{"{",RowBox[{"54",",",FractionBox["1499848","729"],",",FractionBox["12800","187353"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"55",",",FractionBox["6223496","3025"],",",FractionBox["2048","31097"],",",FractionBox[
+"50237488864","27451875"],",",FractionBox["3101783068","282205275"]}],"}"}],",",RowBox[
+{"{",RowBox[{"56",",",FractionBox["100808","49"],",",FractionBox["800","12593"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"57",",",FractionBox["6684040","3249"],",",FractionBox["51200","834993"],",",FractionBox[
+"58191083984","31668003"],",",FractionBox["86479127300","8138676771"]}],"}"}],",",RowBox[
+{"{",RowBox[{"58",",",FractionBox["1730120","841"],",",FractionBox["12800","216137"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"59",",",FractionBox["7161032","3481"],",",FractionBox["51200","894617"],",",FractionBox[
+"22351302784","12117361"],",",FractionBox["32024892900","3114161777"]}],"}"}],",",RowBox[
+{"{",RowBox[{"60",",",FractionBox["462856","225"],",",FractionBox["128","2313"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"61",",",FractionBox["7654472","3721"],",",FractionBox["51200","956297"],",",FractionBox[
+"76892762224","41537523"],",",FractionBox["106354813300","10675143411"]}],"}"}],",",RowBox[
+{"{",RowBox[{"62",",",FractionBox["1976840","961"],",",FractionBox["12800","246977"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"63",",",FractionBox["8164360","3969"],",",FractionBox["51200","1020033"],",",FractionBox[
+"87776814368","47258883"],",",FractionBox["117343113500","12145532931"]}],"}"}],",",RowBox[
+{"{",RowBox[{"64",",","2057",",",FractionBox["25","514"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"65",",",FractionBox["8690696","4225"],",",FractionBox["2048","43433"],",",FractionBox[
+"33259200688","17850625"],",",FractionBox["1720842156","183504425"]}],"}"}],",",RowBox[
+{"{",RowBox[{"66",",",FractionBox["2240008","1089"],",",FractionBox["12800","279873"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"67",",",FractionBox["9233480","4489"],",",FractionBox["51200","1153673"],",",FractionBox[
+"112969031104","60453363"],",",FractionBox["141538540300","15536514291"]}],"}"}],",",RowBox[
+{"{",RowBox[{"68",",",FractionBox["594440","289"],",",FractionBox["3200","74273"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"69",",",FractionBox["9792712","4761"],",",FractionBox["51200","1223577"],",",FractionBox[
+"127427375792","68001363"],",",FractionBox["154792831700","17476350291"]}],"}"}],",",RowBox[
+{"{",RowBox[{"70",",",FractionBox["2519624","1225"],",",FractionBox["512","12593"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"71",",",FractionBox["10368392","5041"],",",FractionBox["51200","1295537"],",",FractionBox[
+"47743759648","25411681"],",",FractionBox["56283206100","6530802017"]}],"}"}],",",RowBox[
+{"{",RowBox[{"72",",",FractionBox["166600","81"],",",FractionBox["800","20817"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"73",",",FractionBox["10960520","5329"],",",FractionBox["51200","1369553"],",",FractionBox[
+"160461751888","85194723"],",",FractionBox["183732482500","21895043811"]}],"}"}],",",RowBox[
+{"{",RowBox[{"74",",",FractionBox["2815688","1369"],",",FractionBox["12800","351833"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"75",",",FractionBox["11569096","5625"],",",FractionBox["2048","57825"],",",FractionBox[
+"179202174464","94921875"],",",FractionBox["7978600268","975796875"]}],"}"}],",",RowBox[
+{"{",RowBox[{"76",",",FractionBox["742472","361"],",",FractionBox["3200","92777"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"77",",",FractionBox["12194120","5929"],",",FractionBox["51200","1523753"],",",FractionBox[
+"66512765008","35153041"],",",FractionBox["72023591100","9034331537"]}],"}"}],",",RowBox[
+{"{",RowBox[{"78",",",FractionBox["3128200","1521"],",",FractionBox["12800","390897"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"79",",",FractionBox["12835592","6241"],",",FractionBox["51200","1603937"],",",FractionBox[
+"221558230432","116850243"],",",FractionBox["233573364700","30030512451"]}],"}"}],",",RowBox[
+{"{",RowBox[{"80",",",FractionBox["51416","25"],",",FractionBox["8","257"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"81",",",FractionBox["13493512","6561"],",",FractionBox["51200","1686177"],",",FractionBox[
+"245352466064","129140163"],",",FractionBox["251996363300","33189021891"]}],"}"}],",",RowBox[
+{"{",RowBox[{"82",",",FractionBox["3457160","1681"],",",FractionBox["12800","432017"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"83",",",FractionBox["14167880","6889"],",",FractionBox["51200","1770473"],",",FractionBox[
+"90337951936","47458321"],",",FractionBox["90454450500","12196788497"]}],"}"}],",",RowBox[
+{"{",RowBox[{"84",",",FractionBox["906952","441"],",",FractionBox["3200","113337"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"85",",",FractionBox["14858696","7225"],",",FractionBox["2048","74273"],",",FractionBox[
+"298637622064","156601875"],",",FractionBox["11667916468","1609867275"]}],"}"}],",",RowBox[
+{"{",RowBox[{"86",",",FractionBox["3802568","1849"],",",FractionBox["12800","475193"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"87",",",FractionBox["15565960","7569"],",",FractionBox["51200","1945233"],",",FractionBox[
+"328321355744","171869283"],",",FractionBox["313023626300","44170405731"]}],"}"}],",",RowBox[
+{"{",RowBox[{"88",",",FractionBox["248840","121"],",",FractionBox["800","31097"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"89",",",FractionBox["16289672","7921"],",",FractionBox["51200","2035697"],",",FractionBox[
+"120055005424","62742241"],",",FractionBox["111788025900","16124755937"]}],"}"}],",",RowBox[
+{"{",RowBox[{"90",",",FractionBox["4164424","2025"],",",FractionBox["512","20817"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"91",",",FractionBox["17029832","8281"],",",FractionBox["51200","2128217"],",",FractionBox[
+"394270931584","205724883"],",",FractionBox["358742848300","52871294931"]}],"}"}],",",RowBox[
+{"{",RowBox[{"92",",",FractionBox["1087880","529"],",",FractionBox["3200","135953"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"93",",",FractionBox["17786440","8649"],",",FractionBox["51200","2222793"],",",FractionBox[
+"430743798128","224415603"],",",FractionBox["383183520500","57674809971"]}],"}"}],",",RowBox[
+{"{",RowBox[{"94",",",FractionBox["4542728","2209"],",",FractionBox["12800","567713"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"95",",",FractionBox["18559496","9025"],",",FractionBox["2048","92777"],",",FractionBox[
+"156563560288","81450625"],",",FractionBox["5449462356","837312425"]}],"}"}],",",RowBox[
+{"{",RowBox[{"96",",",FractionBox["18508","9"],",",FractionBox["50","2313"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"97",",",FractionBox["19349000","9409"],",",FractionBox["51200","2418113"],",",FractionBox[
+"511221013264","265587843"],",",FractionBox["435344899300","68256075651"]}],"}"}],",",RowBox[
+{"{",RowBox[{"98",",",FractionBox["4937480","2401"],",",FractionBox["12800","617057"],",","2056",",","0"}],"}"}],",",RowBox[
+{"{",RowBox[{"99",",",FractionBox["20154952","9801"],",",FractionBox["51200","2518857"],",",FractionBox[
+"555446597312","288178803"],",",FractionBox["463112770700","74061952371"]}],"}"}],",",RowBox[
+{"{",RowBox[{"100",",",FractionBox["1285256","625"],",",FractionBox["128","6425"],",","2056",",","0"}],"}"}]}],"}"}],
+StandardForm],"Output",CellLabel -> "Out[90]= ",ExpressionUUID -> "3b236afa-102f-43ee-8f0f-75ec2a8d1324"],Cell[
+BoxData[
+TagBox[GridBox[{{"\"n\"","\"Trapezoidal Result\"","\"Trapezoidal Error\"","\"Simpsons Result\"","\"Simpsons Error\""},{"2","3080",FractionBox[
+"12800","257"],"2056","0"},{"3",FractionBox["22600","9"],FractionBox["51200","2313"],FractionBox[
+"371648","243"],FractionBox["1599500","62451"]},{"4","2312",FractionBox["3200","257"],"2056","0"},{"5",FractionBox[
+"55496","25"],FractionBox["2048","257"],FractionBox["550288","625"],FractionBox["367356",
+"6425"]},{"6",FractionBox["19528","9"],FractionBox["12800","2313"],"2056","0"},{"7",FractionBox[
+"104840","49"],FractionBox["51200","12593"],FractionBox["6700384","7203"],FractionBox[
+"101362300","1851171"]},{"8","2120",FractionBox["800","257"],"2056","0"},{"9",FractionBox[
+"170632","81"],FractionBox["51200","20817"],FractionBox["20739152","19683"],FractionBox[
+"246613700","5058531"]},{"10",FractionBox["52424","25"],FractionBox["512","257"],"2056","0"},{"11",FractionBox[
+"252872","121"],FractionBox["51200","31097"],FractionBox["17118208","14641"],FractionBox[
+"162296100","3762737"]},{"12",FractionBox["18760","9"],FractionBox["3200","2313"],"2056","0"},{"13",FractionBox[
+"351560","169"],FractionBox["51200","43433"],FractionBox["108502768","85683"],FractionBox[
+"845768500","22020531"]},{"14",FractionBox["101768","49"],FractionBox["12800","12593"],"2056","0"},{"15",FractionBox[
+"466696","225"],FractionBox["2048","2313"],FractionBox["204508064","151875"],FractionBox[
+"53873468","1561275"]},{"16","2072",FractionBox["200","257"],"2056","0"},{"17",FractionBox[
+"598280","289"],FractionBox["51200","74273"],FractionBox["118021168","83521"],FractionBox[
+"671225100","21464897"]},{"18",FractionBox["167560","81"],FractionBox["12800","20817"],"2056","0"},{"19",FractionBox[
+"746312","361"],FractionBox["51200","92777"],FractionBox["574230592","390963"],FractionBox[
+"2869866700","100477491"]},{"20",FractionBox["51656","25"],FractionBox["128","257"],"2056","0"},{"21",FractionBox[
+"910792","441"],FractionBox["51200","113337"],FractionBox["884439344","583443"],FractionBox[
+"3938993300","149944851"]},{"22",FractionBox["249800","121"],FractionBox["12800",
+"31097"],"2056","0"},{"23",FractionBox["1091720","529"],FractionBox["51200","135953"],FractionBox[
+"435496096","279841"],FractionBox["1748212500","71919137"]},{"24",FractionBox["18568",
+"9"],FractionBox["800","2313"],"2056","0"},{"25",FractionBox["1289096","625"],FractionBox[
+"2048","6425"],FractionBox["1864544464","1171875"],FractionBox["272415268","12046875"]},{"26",FractionBox[
+"348488","169"],FractionBox["12800","43433"],"2056","0"},{"27",FractionBox["1502920",
+"729"],FractionBox["51200","187353"],FractionBox["2585143424","1594323"],FractionBox[
+"8659808300","409741011"]},{"28",FractionBox["101000","49"],FractionBox["3200","12593"],"2056","0"},{"29",FractionBox[
+"1733192","841"],FractionBox["51200","216137"],FractionBox["1165729744","707281"],FractionBox[
+"3605499900","181771217"]},{"30",FractionBox["463624","225"],FractionBox["512","2313"],"2056","0"},{"31",FractionBox[
+"1979912","961"],FractionBox["51200","246977"],FractionBox["4631954464","2770563"],FractionBox[
+"13304038300","712034691"]},{"32","2060",FractionBox["50","257"],"2056","0"},{"33",FractionBox[
+"2243080","1089"],FractionBox["51200","279873"],FractionBox["6023080208","3557763"],FractionBox[
+"16146006500","914345091"]},{"34",FractionBox["595208","289"],FractionBox["12800",
+"74273"],"2056","0"},{"35",FractionBox["2522696","1225"],FractionBox["2048","12593"],FractionBox[
+"2568858688","1500625"],FractionBox["258213156","15426425"]},{"36",FractionBox["166792",
+"81"],FractionBox["3200","20817"],"2056","0"},{"37",FractionBox["2818760","1369"],FractionBox[
+"51200","351833"],FractionBox["9720820144","5622483"],FractionBox["22987561300","1444978131"]},{"38",FractionBox[
+"743240","361"],FractionBox["12800","92777"],"2056","0"},{"39",FractionBox["3131272",
+"1521"],FractionBox["51200","390897"],FractionBox["12106559072","6940323"],FractionBox[
+"27034312700","1783663011"]},{"40",FractionBox["51464","25"],FractionBox["32","257"],"2056","0"},{"41",FractionBox[
+"3460232","1681"],FractionBox["51200","432017"],FractionBox["4968969328","2825761"],FractionBox[
+"10509941100","726220577"]},{"42",FractionBox["907720","441"],FractionBox["12800",
+"113337"],"2056","0"},{"43",FractionBox["3805640","1849"],FractionBox["51200","475193"],FractionBox[
+"18167350528","10256403"],FractionBox["36497675500","2635895571"]},{"44",FractionBox[
+"249032","121"],FractionBox["3200","31097"],"2056","0"},{"45",FractionBox["4167496",
+"2025"],FractionBox["2048","20817"],FractionBox["21935738864","12301875"],FractionBox[
+"1678458068","126463275"]},{"46",FractionBox["1088648","529"],FractionBox["12800",
+"135953"],"2056","0"},{"47",FractionBox["4545800","2209"],FractionBox["51200","567713"],FractionBox[
+"8754097888","4879681"],FractionBox["15981578100","1254078017"]},{"48",FractionBox[
+"18520","9"],FractionBox["200","2313"],"2056","0"},{"49",FractionBox["4940552","2401"],FractionBox[
+"51200","617057"],FractionBox["31199604112","17294403"],FractionBox["54471105700",
+"4444661571"]},{"50",FractionBox["1286024","625"],FractionBox["512","6425"],"2056","0"},{"51",FractionBox[
+"5351752","2601"],FractionBox["51200","668457"],FractionBox["36802627904","20295603"],FractionBox[
+"61564148300","5215969971"]},{"52",FractionBox["347720","169"],FractionBox["3200",
+"43433"],"2056","0"},{"53",FractionBox["5779400","2809"],FractionBox["51200","721913"],FractionBox[
+"14376230416","7890481"],FractionBox["23082481500","2027853617"]},{"54",FractionBox[
+"1499848","729"],FractionBox["12800","187353"],"2056","0"},{"55",FractionBox["6223496",
+"3025"],FractionBox["2048","31097"],FractionBox["50237488864","27451875"],FractionBox[
+"3101783068","282205275"]},{"56",FractionBox["100808","49"],FractionBox["800","12593"],"2056","0"},{"57",FractionBox[
+"6684040","3249"],FractionBox["51200","834993"],FractionBox["58191083984","31668003"],FractionBox[
+"86479127300","8138676771"]},{"58",FractionBox["1730120","841"],FractionBox["12800",
+"216137"],"2056","0"},{"59",FractionBox["7161032","3481"],FractionBox["51200","894617"],FractionBox[
+"22351302784","12117361"],FractionBox["32024892900","3114161777"]},{"60",FractionBox[
+"462856","225"],FractionBox["128","2313"],"2056","0"},{"61",FractionBox["7654472",
+"3721"],FractionBox["51200","956297"],FractionBox["76892762224","41537523"],FractionBox[
+"106354813300","10675143411"]},{"62",FractionBox["1976840","961"],FractionBox["12800",
+"246977"],"2056","0"},{"63",FractionBox["8164360","3969"],FractionBox["51200","1020033"],FractionBox[
+"87776814368","47258883"],FractionBox["117343113500","12145532931"]},{"64","2057",FractionBox[
+"25","514"],"2056","0"},{"65",FractionBox["8690696","4225"],FractionBox["2048","43433"],FractionBox[
+"33259200688","17850625"],FractionBox["1720842156","183504425"]},{"66",FractionBox[
+"2240008","1089"],FractionBox["12800","279873"],"2056","0"},{"67",FractionBox["9233480",
+"4489"],FractionBox["51200","1153673"],FractionBox["112969031104","60453363"],FractionBox[
+"141538540300","15536514291"]},{"68",FractionBox["594440","289"],FractionBox["3200",
+"74273"],"2056","0"},{"69",FractionBox["9792712","4761"],FractionBox["51200","1223577"],FractionBox[
+"127427375792","68001363"],FractionBox["154792831700","17476350291"]},{"70",FractionBox[
+"2519624","1225"],FractionBox["512","12593"],"2056","0"},{"71",FractionBox["10368392",
+"5041"],FractionBox["51200","1295537"],FractionBox["47743759648","25411681"],FractionBox[
+"56283206100","6530802017"]},{"72",FractionBox["166600","81"],FractionBox["800","20817"],"2056","0"},{"73",FractionBox[
+"10960520","5329"],FractionBox["51200","1369553"],FractionBox["160461751888","85194723"],FractionBox[
+"183732482500","21895043811"]},{"74",FractionBox["2815688","1369"],FractionBox["12800",
+"351833"],"2056","0"},{"75",FractionBox["11569096","5625"],FractionBox["2048","57825"],FractionBox[
+"179202174464","94921875"],FractionBox["7978600268","975796875"]},{"76",FractionBox[
+"742472","361"],FractionBox["3200","92777"],"2056","0"},{"77",FractionBox["12194120",
+"5929"],FractionBox["51200","1523753"],FractionBox["66512765008","35153041"],FractionBox[
+"72023591100","9034331537"]},{"78",FractionBox["3128200","1521"],FractionBox["12800",
+"390897"],"2056","0"},{"79",FractionBox["12835592","6241"],FractionBox["51200","1603937"],FractionBox[
+"221558230432","116850243"],FractionBox["233573364700","30030512451"]},{"80",FractionBox[
+"51416","25"],FractionBox["8","257"],"2056","0"},{"81",FractionBox["13493512","6561"],FractionBox[
+"51200","1686177"],FractionBox["245352466064","129140163"],FractionBox["251996363300",
+"33189021891"]},{"82",FractionBox["3457160","1681"],FractionBox["12800","432017"],"2056","0"},{"83",FractionBox[
+"14167880","6889"],FractionBox["51200","1770473"],FractionBox["90337951936","47458321"],FractionBox[
+"90454450500","12196788497"]},{"84",FractionBox["906952","441"],FractionBox["3200",
+"113337"],"2056","0"},{"85",FractionBox["14858696","7225"],FractionBox["2048","74273"],FractionBox[
+"298637622064","156601875"],FractionBox["11667916468","1609867275"]},{"86",FractionBox[
+"3802568","1849"],FractionBox["12800","475193"],"2056","0"},{"87",FractionBox["15565960",
+"7569"],FractionBox["51200","1945233"],FractionBox["328321355744","171869283"],FractionBox[
+"313023626300","44170405731"]},{"88",FractionBox["248840","121"],FractionBox["800",
+"31097"],"2056","0"},{"89",FractionBox["16289672","7921"],FractionBox["51200","2035697"],FractionBox[
+"120055005424","62742241"],FractionBox["111788025900","16124755937"]},{"90",FractionBox[
+"4164424","2025"],FractionBox["512","20817"],"2056","0"},{"91",FractionBox["17029832",
+"8281"],FractionBox["51200","2128217"],FractionBox["394270931584","205724883"],FractionBox[
+"358742848300","52871294931"]},{"92",FractionBox["1087880","529"],FractionBox["3200",
+"135953"],"2056","0"},{"93",FractionBox["17786440","8649"],FractionBox["51200","2222793"],FractionBox[
+"430743798128","224415603"],FractionBox["383183520500","57674809971"]},{"94",FractionBox[
+"4542728","2209"],FractionBox["12800","567713"],"2056","0"},{"95",FractionBox["18559496",
+"9025"],FractionBox["2048","92777"],FractionBox["156563560288","81450625"],FractionBox[
+"5449462356","837312425"]},{"96",FractionBox["18508","9"],FractionBox["50","2313"],"2056","0"},{"97",FractionBox[
+"19349000","9409"],FractionBox["51200","2418113"],FractionBox["511221013264","265587843"],FractionBox[
+"435344899300","68256075651"]},{"98",FractionBox["4937480","2401"],FractionBox["12800",
+"617057"],"2056","0"},{"99",FractionBox["20154952","9801"],FractionBox["51200","2518857"],FractionBox[
+"555446597312","288178803"],FractionBox["463112770700","74061952371"]},{"100",FractionBox[
+"1285256","625"],FractionBox["128","6425"],"2056","0"}},AutoDelete -> False,GridBoxFrame -> {"Columns" -> {{True}},"Rows" -> {{True}}},
+GridBoxItemSize -> {"Columns" -> {{Automatic}},"Rows" -> {{Automatic}}}],"Grid"],
+StandardForm],"Output",CellLabel -> "Out[92]= ",ExpressionUUID -> "a3a44bf3-9e06-4eb2-9cb1-691afed864dd"],Cell[
+BoxData[
+TemplateBox[{GraphicsBox[{{},{{TagBox[{Directive[PointSize[0.009166666666666668`],
+RGBColor[0.368417`,0.506779`,0.709798`],AbsoluteThickness[2]],PointBox[CompressedData[
+"1:eJwtk3tMjXEch9/xx2lsZWMnx3Jr4bglpItK3zrdder0nqvLZliWQjNCDMdkxsxcDqGQSzpuJXIPJ5lITDLDslzmktVYxmhrZOc5787Onj3n876/3/f3eUcuyFez+yiKsrD3+/+Xj+g+D+69UsSLPqJdk/fYExgGD8Dr4UEy4u3w/xc8mP9r4QBpMC4LthgGwCPI+8CBErJ1nn7o+b5wEPf7G+vl0WI2anZ/tnfDeu7/Cx4nBRU9bwpbu+AJPO87HCwBSsOZ5dYOOITnf4Eni2Fi6LBRfp/gKaznAzxVxln9I16638GhrK8NnibPl+rCCttb4TDW+xoOF/eq1O7IIS/hCNb/Ao6UlKnvmtYueg5PZz/P4CjpardI/vpmOJr9PYVj5EWROzdDfQLPYL9NcKx0jr2j1WxrhIX9P/CyUyRNX93lym3AxzGP+/g4aVpaXOzXfA8fz3zq8fGS4zdbLSq7izcwrzq8QdKr83d013vwCczvDj5BNnzN3t5hu41PZJ61+EQ5OKn9UcS+m/gk5nsDnyTqzjnrNk26jk9m3tfwyZLZk/lzpfYqPoX5X8GnyJWNeeHNMZfxqZxHDT5VPj1LC68quYRP43wu4tPEcDO+b88YWJnJeVXjZ8pWH5eqa72AT+f8YGe6DIwvKfXNrsIbOc9KvFHaGj/E5BjP4zM433P4DOmMDrDsXXwWn8l5n8FnSq2+O0d76TTexPm7vSwmeTjwrGZFEOw00YcKL3tMUh+4a/Wfa6fIZ9EPWLJEY4wzlS8pJ59FX06SzxJd/4ZvSjSsqPTnBHlVAm7F2XyDYKdKn46TV6VwkS0hNBBWzPTrGHmzVL3y1AaHwk4zfSsjb5Z+ZTVRfRywYqF/R8lbpGDz2sj3/rDTQh+PkLdIY82ebR9LD5O30s9S8lZprnGtcUTDTit9LSFvlS17NJ0tPw6Rt9FfWGyS5/YZOa3uIHkbfYY9NsnVFVx3HT9A3k6/YbHL/I7TIbH7i8nb6TvssUtuS9LcykP7yTvoPywOGf/7btvmyn3kHbwPsMch6550ZRc9dZGfxfvhiv0HLOu4XA=="]]},
+Function[Annotation[Slot[1],"Charting`Private`Tag#1"]]],TagBox[{Directive[PointSize[
+0.009166666666666668`],RGBColor[0.880722`,0.611041`,0.142051`],AbsoluteThickness[
+2]],PointBox[CompressedData["1:eJxd1GtIU3EcxvHD1DCCKDIqNS/zkqlMN7WpaT66Tedtzl10ahexRAipICMLjWFGllCKsjcJlRiEQbqUDMU4sbCiUhQsU8LAIkoxTN+ojC70O4G/A2Pw/fC82Dln/+CK06ZKmSAIx/98/n7TBWHD5Y2nUyqtsyOJ+jbmPhh6FRzb5Mijvpu5P76XOGOGy3OpBzGXI7q3YiyjXE89lHk4BtWy6pUWHfUI5pHIvr5JnRavoR7NXIHxM+urI0inHstcibo+5ZpFl0ZdxTwOs1fVc0s3U6jHM0/AsYTFSi9dMvUDzNV4H9LqOWNIpJ7IPAm7GocffOuQdsnMD+LOpaj6RnkC9RTmqZC3q2Qzk3HUDzFPQ9WP/tepPdLvwka3A8svRhyO+0rq6czTYbLOOryGpfuWwTwDDQPOKtV4DHUNcw12PulOUxoV1LXMtVC7zn4cWJKem465Dpvn/T6XOaOoZzLPRJnYeepkcyT1LOZZ+Glfa39et5+6nrketfrtb1wN0nuVzTwbqyfcsaG39lHPYZ6DWMU7y7IrnHou81x0hnTVN6yHUc9jnge7aaW9DJLnM8/HuU+CIrFV+l8YmBsQ5m5Sri2EUC9gXoDquoipeybJjRsdRtwe/Npz+Jn8X7czF43QB/TVliSSC4VsXwg/m/hw4XEw7ZmLhbiia+m8kEIumNjeBJnri2fNSzoX7MxFEyI84iaOlErnhpntzZgM3OLbPBdIe+aiGZWR2ppr/uSChe0tULh/hbuPBtCeuWhBk3B3IrV7L3Ur21vRG91lfuT2pz1z0Yp+7eKOMRu5UMT2RTBoptt8hvxoz1wswnTOqHxrKLlQzPbFUH44LxrbfGnPXCzGfMVC0EVvcsHG9jaUYnI05vIe2jMXbfB+e6MqwINcKPnvvwFSF/J/"]]},
+Function[Annotation[Slot[1],"Charting`Private`Tag#2"]]]}},{{},{}}},{DisplayFunction -> Identity,DisplayFunction -> Identity,AspectRatio -> NCache[
+Power[GoldenRatio,-1],0.6180339887498948`],Axes -> {True,True},AxesLabel -> {None,None},AxesOrigin -> {0,0},RuleDelayed[
+DisplayFunction,Identity],Frame -> {{False,False},{False,False}},FrameLabel -> {{FormBox[
+TagBox["\"Percent Relative Error (%)\"",HoldForm],TraditionalForm],None},{FormBox[
+TagBox["\"Number of Intervals (n)\"",HoldForm],TraditionalForm],None}},FrameTicks -> {{Automatic,Automatic},{Automatic,Automatic}},GridLines -> {None,None},GridLinesStyle -> Directive[
+GrayLevel[0.5`,0.4`]],Method -> CompressedData["1:eJzNlmtMFFcUxwdFq8FXfQU1Gok2okltDYmNX7xF0BUF2bJg0mpih907cOXu3PXcGWXxm9VEjSZNJb5q6iNRU2v5UNFUU74Y335om4hafIEPkBQjRKNfRD13VpZ1WdbXfPAmO3tm7tzfOfd/T+acjFJRZAzWNE2m4iWfScvo03VXZHPqS0Mju5JJrx4IMLPMSFGz/fHi8+ucBmD1yBpPU1U1iVs2Eo1caug2t+YI2wzoEPZZYU7lQMWzLRHULeaPWzS2e5EH9FA588s806Kg+y0mTKNvkjA/QWMxBYnvQZYzHsWHNByNYmRVFAhbUq+QzKH2iaU6RjHYVPZDY57OJU3gaK5hUL8lkwak9jmflZVz/FkR1Xp5U3kCVEMw9TxuckgsxiuY+QEsFVIuiBBnJpWv7zuBVAZQaggI5tggBRSIAI2Kk4Ab4rqfBqlpJeWq0Ct9SrZszhPMhX3qdpEw410M686MAirLnVSKCPGpgpVKwW2LOvr4WBVl/XvuPgbh5cKKIIb2DNZRiQEeMFtJI0c8QDE8c3IEFwChrT/dm1x9hcCMra3b1n/VSODs2u0LDx1rJj0DKsYUrkCxZcxxvImff2pJy63pbQSer25v2L/5DoEjO2umnJh+0iW+1vxdrfagiYD9e11hSUYzgTE/1t3s7DjnEv/S0SezS9Y9IHD9i92H02uuEsj0pOz7/swFl/j712w8tKwVZe/Y9fnE2gk3CbCN2sFVK9zSv+jojdRbtfcJ7Coc/1v1L9cItI/Z8M+AmSdc4m8ZN/fy2AWYPzWlHT+fvIDnu+dGxmltYKs7fKYgoDnjPmHqz524//r2h6clx+8SqOiYqp3JwnOdNHpG25cH7rikCx33Z197wW3MywmjXqw6hYb2arjDn99UhaUK8zJi1JNXdeKiS/FPm/VZ7vCD/xH4uv7xN57axi7+/y7xRdrewcszHhIoz3nWsuYu5k1D/d+DGs7+4RJ/k7Yi+/iWFgLHHnVeqmy9TCB/5qKlF9MbXeLv82ZNanj4LwFH/ib87pRdP1+XWXntLfnRD7nqVnKxf2DmO/YkykO0RMyzTaercCqsL6hzHp2KWzZIGbpZRntzt3OHGr/GuxuBRmHIYkFEqopToEMFdii9VVH1ep7p53aARgs+enPcYw0GrK2R+p+kQXhzi/WOQY1WzoUA3LduUVksBFerhZm8fxjq5ILEpiDcpXNENZUR0SevE6LzeQHcKrPC3fNeHWLaHh+G7XzlnMv7rEuQVCOcjYYYDSzWuU0/1qhfApPUJTw="],PlotRange -> {{0,100.`},{0,57.17603112840467`}},PlotRangeClipping -> True,PlotRangePadding -> {{Scaled[
+0.02`],Scaled[0.02`]},{Scaled[0.02`],Scaled[0.05`]}},Ticks -> {Automatic,Automatic}}],FormBox[
+FormBox[TemplateBox[{"\"Trapezoidal Error\"","\"Simpsons Error\""},"PointLegend",
+DisplayFunction -> Function[FormBox[StyleBox[StyleBox[PaneBox[TagBox[GridBox[{{TagBox[
+GridBox[{{GraphicsBox[{{},{Directive[EdgeForm[Directive[Opacity[0.3`],GrayLevel[0]]],
+PointSize[0.5`],RGBColor[0.368417`,0.506779`,0.709798`],AbsoluteThickness[2]],{Directive[
+EdgeForm[Directive[Opacity[0.3`],GrayLevel[0]]],PointSize[0.5`],RGBColor[0.368417`,
+0.506779`,0.709798`],AbsoluteThickness[2]],PointBox[NCache[{Scaled[{Rational[1,2],Rational[
+1,2]}]},{Scaled[{0.5`,0.5`}]}]]}}},AspectRatio -> Full,ImageSize -> {10,12.5`},PlotRangePadding -> None,
+ImagePadding -> Automatic,BaselinePosition -> (Scaled[0.18000000000000002`] -> Baseline)],Slot[
+1]},{GraphicsBox[{{},{Directive[EdgeForm[Directive[Opacity[0.3`],GrayLevel[0]]],PointSize[
+0.5`],RGBColor[0.880722`,0.611041`,0.142051`],AbsoluteThickness[2]],{Directive[EdgeForm[
+Directive[Opacity[0.3`],GrayLevel[0]]],PointSize[0.5`],RGBColor[0.880722`,0.611041`,
+0.142051`],AbsoluteThickness[2]],PointBox[NCache[{Scaled[{Rational[1,2],Rational[
+1,2]}]},{Scaled[{0.5`,0.5`}]}]]}}},AspectRatio -> Full,ImageSize -> {10,12.5`},PlotRangePadding -> None,
+ImagePadding -> Automatic,BaselinePosition -> (Scaled[0.18000000000000002`] -> Baseline)],Slot[
+2]}},GridBoxAlignment -> {"Columns" -> {Center,Left},"Rows" -> {{Baseline}}},AutoDelete -> False,
+GridBoxDividers -> {"Columns" -> {{False}},"Rows" -> {{False}}},GridBoxItemSize -> {"Columns" -> {{All}},"Rows" -> {{All}}},
+GridBoxSpacings -> {"Columns" -> {{0.5`}},"Rows" -> {{0.8`}}}],"Grid"]}},GridBoxAlignment -> {"Columns" -> {{Left}},"Rows" -> {{Top}}},
+AutoDelete -> False,GridBoxItemSize -> {"Columns" -> {{Automatic}},"Rows" -> {{Automatic}}},
+GridBoxSpacings -> {"Columns" -> {{1}},"Rows" -> {{0}}}],"Grid"],Alignment -> Left,
+AppearanceElements -> None,ImageMargins -> {{5,5},{5,5}},ImageSizeAction -> "ResizeToFit"],
+LineIndent -> 0,StripOnInput -> False],{FontFamily -> "Arial"},Background -> Automatic,
+StripOnInput -> False],TraditionalForm]],RuleDelayed[InterpretationFunction,Function[
+RowBox[{"PointLegend","[",RowBox[{RowBox[{"{",RowBox[{RowBox[{"Directive","[",RowBox[
+{RowBox[{"PointSize","[","0.009166666666666668`","]"}],",",TemplateBox[Association[
+"color" -> RGBColor[0.368417`,0.506779`,0.709798`]],"RGBColorSwatchTemplate"],",",RowBox[
+{"AbsoluteThickness","[","2","]"}]}],"]"}],",",RowBox[{"Directive","[",RowBox[{RowBox[
+{"PointSize","[","0.009166666666666668`","]"}],",",TemplateBox[Association["color" -> RGBColor[
+0.880722`,0.611041`,0.142051`]],"RGBColorSwatchTemplate"],",",RowBox[{"AbsoluteThickness","[","2","]"}]}],"]"}]}],"}"}],",",RowBox[
+{"{",RowBox[{Slot[1],",",Slot[2]}],"}"}],",",RowBox[{"LegendMarkers","\[Rule]",RowBox[
+{"{",RowBox[{RowBox[{"{",RowBox[{"False",",","Automatic"}],"}"}],",",RowBox[{"{",RowBox[
+{"False",",","Automatic"}],"}"}]}],"}"}]}],",",RowBox[{"Joined","\[Rule]",RowBox[
+{"{",RowBox[{"False",",","False"}],"}"}]}],",",RowBox[{"LabelStyle","\[Rule]",RowBox[
+{"{","}"}]}],",",RowBox[{"LegendLayout","\[Rule]","\"Column\""}]}],"]"}]]],Editable -> True],
+TraditionalForm],TraditionalForm]},"Legended",DisplayFunction -> Function[GridBox[
+{{TagBox[ItemBox[PaneBox[TagBox[Slot[1],"SkipImageSizeLevel"],Alignment -> {Center,Baseline},
+BaselinePosition -> Baseline],DefaultBaseStyle -> "Labeled"],"SkipImageSizeLevel"],ItemBox[
+Slot[2],DefaultBaseStyle -> "LabeledLabel"]}},GridBoxAlignment -> {"Columns" -> {{Center}},"Rows" -> {{Center}}},
+AutoDelete -> False,GridBoxItemSize -> Automatic,BaselinePosition -> {1,1}]],InterpretationFunction -> Function[
+RowBox[{"Legended","[",RowBox[{Slot[1],",",RowBox[{"Placed","[",RowBox[{Slot[2],",","After"}],"]"}]}],"]"}]],
+Editable -> True],StandardForm],"Output",CellLabel -> "Out[93]= ",ExpressionUUID -> "3fc14d4b-ba60-44c4-86ca-108d8afce4b5"]},
+Open],ExpressionUUID -> "a05fa10f-1701-4e36-abf7-bf5fb3288caa"]},StyleDefinitions -> "Default.nb",
+FrontEndVersion -> "13.3 for Wolfram Cloud 1.67.0.1 (October 23, 2023)"]
